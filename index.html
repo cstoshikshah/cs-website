@@ -1,193 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CompliMate</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompliMate - Compliance, Simplified</title>
   <style>
-    /* ===== Global Theme (Corporate Blue Gradient) ===== */
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Global Reset */
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #004e92, #000428);
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
-    }
-
-    header {
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    header img {
-      width: 120px;
-      margin-bottom: 15px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 5px;
-      color: #d0d0d0;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ffffff;
-    }
-
-    /* ===== Accordion Styling ===== */
-    .accordion {
-      margin: 10px 0;
-      border-radius: 8px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .accordion-header {
-      cursor: pointer;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      font-size: 1.2rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s;
-    }
-
-    .accordion-header:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .accordion-header::after {
-      content: "▶";
-      font-size: 1rem;
-      transition: transform 0.3s;
-    }
-
-    .accordion-header.active::after {
-      transform: rotate(90deg);
-    }
-
-    .accordion-content {
-      display: none;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.1);
       line-height: 1.6;
     }
 
-    .accordion-content ul {
-      margin: 0;
-      padding-left: 20px;
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 30px;
+      text-align: center;
+    }
+
+    header img {
+      max-width: 120px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #1abc9c;
+      color: #000;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #1abc9c;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    /* Collapsible */
+    .collapsible {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      cursor: pointer;
+      padding: 15px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .collapsible:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: rgba(255, 255, 255, 0.05);
+      margin-bottom: 10px;
+      padding: 0 15px;
+      border-radius: 5px;
+    }
+
+    .content ul {
+      padding: 15px;
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+    }
+
+    .active .arrow {
+      transform: rotate(90deg);
+    }
+
+    /* Contact Form */
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form input, form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      width: 100%;
+    }
+
+    form button {
+      padding: 12px;
+      border: none;
+      background: #1abc9c;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #16a085;
     }
 
     footer {
       text-align: center;
       padding: 20px;
+      margin-top: 30px;
       background: rgba(0, 0, 0, 0.5);
-      margin-top: 40px;
-      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="images/complimate.png" alt="CompliMate Logo"/>
+    <img src="images/complimate.png" alt="CompliMate Logo">
     <h1>CompliMate</h1>
     <p>Compliance, Simplified.</p>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main>
+  <section id="home">
+    <h2>Welcome to CompliMate</h2>
+    <p style="text-align:center;">Your trusted partner in corporate, legal, and compliance solutions.</p>
+  </section>
+
+  <section id="services">
     <h2>Our Services</h2>
 
-    <!-- Service 1 -->
-    <div class="accordion">
-      <div class="accordion-header">ROC Filing Services</div>
-      <div class="accordion-content">
-        <ul>
-          <li>AOC-4 Filing Automation</li>
-          <li>MGT-7A Filing Automation</li>
-          <li>LLP Form 8 Filing</li>
-          <li>DIR-3 KYC</li>
-          <li>XBRL Filing</li>
-        </ul>
-      </div>
+    <!-- Secretarial Compliance -->
+    <button class="collapsible">Secretarial Compliance <span class="arrow">▶</span></button>
+    <div class="content">
+      <ul>
+        <li>Company Incorporation</li>
+        <li>ROC Filings (AOC-4, MGT-7A, etc.)</li>
+        <li>Minutes & Registers Maintenance</li>
+        <li>Event-based Compliance</li>
+      </ul>
     </div>
 
-    <!-- Service 2 -->
-    <div class="accordion">
-      <div class="accordion-header">Company Formation</div>
-      <div class="accordion-content">
-        <ul>
-          <li>Private Limited Company Incorporation</li>
-          <li>Section 8 Company Formation</li>
-          <li>LLP Incorporation</li>
-          <li>One Person Company (OPC)</li>
-        </ul>
-      </div>
+    <!-- FEMA & RBI -->
+    <button class="collapsible">FEMA & RBI Compliance <span class="arrow">▶</span></button>
+    <div class="content">
+      <ul>
+        <li>FC-GPR & FC-TRS Filings</li>
+        <li>ODI / FLA Returns</li>
+        <li>Reporting of Foreign Direct Investments</li>
+      </ul>
     </div>
 
-    <!-- Service 3 -->
-    <div class="accordion">
-      <div class="accordion-header">Compliance Management</div>
-      <div class="accordion-content">
-        <ul>
-          <li>Annual ROC Filings</li>
-          <li>Board Meeting & Resolution Drafting</li>
-          <li>Event Based Filings</li>
-        </ul>
-      </div>
+    <!-- Startup Advisory -->
+    <button class="collapsible">Startup Advisory <span class="arrow">▶</span></button>
+    <div class="content">
+      <ul>
+        <li>Business Structuring</li>
+        <li>Shareholding Agreements</li>
+        <li>Investor Agreements</li>
+      </ul>
     </div>
 
-    <!-- Service 4 -->
-    <div class="accordion">
-      <div class="accordion-header">Advisory & Consultancy</div>
-      <div class="accordion-content">
-        <ul>
-          <li>Corporate Law Advisory</li>
-          <li>Due Diligence Support</li>
-          <li>Compliance Health Check</li>
-        </ul>
-      </div>
+    <!-- Drafting & Legal -->
+    <button class="collapsible">Drafting & Legal <span class="arrow">▶</span></button>
+    <div class="content">
+      <ul>
+        <li>Shareholders Agreements</li>
+        <li>Joint Venture Agreements</li>
+        <li>Vendor & Service Agreements</li>
+      </ul>
     </div>
-  </main>
+
+    <!-- Due Diligence -->
+    <button class="collapsible">Due Diligence <span class="arrow">▶</span></button>
+    <div class="content">
+      <ul>
+        <li>Compliance Checklists</li>
+        <li>Secretarial Audit</li>
+        <li>Legal Due Diligence Reports</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <footer>
-    &copy; 2025 CompliMate. All rights reserved.
+    <p>&copy; 2025 CompliMate | Compliance, Simplified.</p>
   </footer>
 
   <script>
-    // Accordion Toggle
-    document.querySelectorAll(".accordion-header").forEach(header => {
-      header.addEventListener("click", () => {
-        header.classList.toggle("active");
-        const content = header.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
+    const coll = document.querySelectorAll(".collapsible");
+    coll.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
         } else {
-          content.style.display = "block";
+          content.style.maxHeight = content.scrollHeight + "px";
         }
       });
     });
   </script>
 </body>
 </html>
+
 
 
 
