@@ -1,227 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complimate Advisory Services</title>
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<section id="services" class="py-16 bg-gradient-to-b from-blue-50 to-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Services</h2>
+    <div class="space-y-4">
 
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #004e92, #000428);
-      color: #333;
-    }
+      <!-- Formation and Conversion -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Formation and Conversion
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Formation of Private Limited Companies <br>
+          • Formation of Public Limited Companies <br>
+          • Formation of Section 8 Companies <br>
+          • Formation of Limited Liability Partnership <br>
+          • Conversion of Partnership Firm into Private or Public Limited Company <br>
+          • Conversion of Private Limited Companies to Public Limited Companies and vice versa <br>
+          • Conversion of Private Limited Companies into LLP
+        </div>
+      </div>
 
-    header {
-      background: rgba(255, 255, 255, 0.9);
-      color: #004e92;
-      padding: 20px 0;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+      <!-- Company Law & Secretarial Compliances -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Company Law & Secretarial Compliances
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Board, Shareholders, Creditors, AGM/EGM compliances <br>
+          • Filing of Annual Returns with MCA <br>
+          • Maintenance of Minutes Books and Registers <br>
+          • Statutory Meeting & Report compliances <br>
+          • Change of name or address of Companies/LLP <br>
+          • Alteration of share capital <br>
+          • Issue / Allotment / Transfer / Transmission of shares <br>
+          • Alteration of main object of Companies <br>
+          • Appointment & Resignation of Directors <br>
+          • Inter-corporate Investments & Loans <br>
+          • Creation, Satisfaction & Registration of charges <br>
+          • Drafting of Reports (Director’s Report, Corporate Governance, Annual Report) <br>
+          • Investor Grievances & Dividend Compliance <br>
+          • Closure of Companies under Fast Track Exit <br>
+          • DIN Compliances, Secretarial Audit, XBRL Filing <br>
+          • Legal Opinions & Petition Drafting <br>
+          • SEBI/Stock Exchange compliances <br>
+          • Search Reports for Banks
+        </div>
+      </div>
 
-    header img {
-      max-height: 60px;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
+      <!-- FEMA, RBI & NBFC Matters -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          FEMA, RBI & NBFC Matters
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Advisory on FEMA and RBI Compliances <br>
+          • Reporting of FDI, ODI, ECB <br>
+          • NBFC Incorporation & Compliances <br>
+          • Compounding Applications with RBI <br>
+          • FEMA related Approvals
+        </div>
+      </div>
 
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 5px;
-    }
+      <!-- Compliance Audit -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Compliance Audit
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Secretarial Audit under Companies Act <br>
+          • Due Diligence Reports <br>
+          • Corporate Governance Audit <br>
+          • Internal Audit of Systems and Processes
+        </div>
+      </div>
 
-    header p {
-      font-size: 16px;
-      font-style: italic;
-      color: #555;
-    }
+      <!-- Corporate Restructuring & Advisory -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Corporate Restructuring & Advisory
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Mergers, Amalgamations & Demergers <br>
+          • Joint Ventures, Takeovers, Buybacks <br>
+          • ESOPs and Shareholders Agreements <br>
+          • Valuation, Drafting & Structuring Advisory
+        </div>
+      </div>
 
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #003366;
-      padding: 10px;
-    }
+      <!-- Labour Laws Compliances -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Labour Laws Compliances
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Provident Fund (PF) Compliances <br>
+          • Employees State Insurance (ESI) Compliances <br>
+          • Professional Tax & Labour Welfare Fund Compliances <br>
+          • Shops & Establishment Act Compliances
+        </div>
+      </div>
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+      <!-- Intellectual Property Rights -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Intellectual Property Rights
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Trademark Registration & Renewal <br>
+          • Copyright Registration <br>
+          • Drafting of IPR Agreements <br>
+          • Advisory on IP Protection
+        </div>
+      </div>
 
-    nav a:hover {
-      color: #ffd700;
-    }
+      <!-- Other Services -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Other Services
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Drafting & Vetting of Agreements <br>
+          • Legal Due Diligence <br>
+          • Business Advisory <br>
+          • Start-up Advisory and Fundraising Compliance
+        </div>
+      </div>
 
-    section {
-      background: #fff;
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 1100px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+      <!-- Accounting, Auditing & Taxation -->
+      <div class="border border-gray-200 rounded-lg shadow-sm">
+        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
+          Accounting, Auditing & Taxation
+          <span class="arrow transition-transform duration-300">▶</span>
+        </button>
+        <div class="hidden px-6 pb-4 text-gray-600">
+          • Bookkeeping & Accounting <br>
+          • Statutory & Internal Audits <br>
+          • GST Registration & Compliances <br>
+          • Income Tax Filing & Advisory <br>
+          • TDS, Advance Tax & Related Compliances
+        </div>
+      </div>
 
-    h2 {
-      color: #004e92;
-      margin-bottom: 20px;
-    }
-
-    /* Services Dropdowns */
-    details {
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 10px 15px;
-      background: #f9f9f9;
-      transition: 0.3s;
-    }
-
-    details summary {
-      font-weight: bold;
-      cursor: pointer;
-      color: #004e92;
-    }
-
-    details[open] {
-      background: #eef6ff;
-      border-color: #004e92;
-    }
-
-    /* Team Section */
-    .team-member {
-      margin-bottom: 25px;
-    }
-
-    .team-member h3 {
-      color: #003366;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      margin-top: 20px;
-    }
-
-    /* Contact Form */
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    form input, form textarea {
-      margin-bottom: 15px;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-    }
-
-    form button {
-      background: #004e92;
-      color: #fff;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    form button:hover {
-      background: #003366;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="logo.png" alt="Complimate Logo">
-    <h1>Complimate Advisory Services</h1>
-    <p>Compliance, Simplified.</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#team">Team</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Complimate Advisory Services is dedicated to providing professional, reliable, and simplified solutions in the areas of compliance, secretarial, taxation, and advisory services. With a team of qualified experts, we aim to deliver clarity, efficiency, and peace of mind to our clients.</p>
-  </section>
-
-  <section id="services">
-    <h2>Our Services</h2>
-
-    <details>
-      <summary>Secretarial Services</summary>
-      <p>Company incorporation, ROC filings, drafting agreements, and corporate governance advisory.</p>
-    </details>
-
-    <details>
-      <summary>Legal & Compliance</summary>
-      <p>Contract drafting, labour law compliance, cyber law advisory, and regulatory matters.</p>
-    </details>
-
-    <details>
-      <summary>Accounting Services</summary>
-      <p>Bookkeeping, financial reporting, MIS preparation, and business accounting solutions.</p>
-    </details>
-
-    <details>
-      <summary>Audit & Assurance</summary>
-      <p>Statutory audits, tax audits, and internal audits ensuring compliance and transparency.</p>
-    </details>
-
-    <details>
-      <summary>Taxation</summary>
-      <p>GST, TDS/TCS, Income Tax, Professional Tax compliance, and representation before tax authorities.</p>
-    </details>
-  </section>
-
-  <section id="team">
-    <h2>Our Team</h2>
-
-    <div class="team-member">
-      <h3>CS Toshik Shah (BCom, CS, LLB)</h3>
-      <p>CS Toshik Shah holds a Bachelor of Commerce degree from Savitribai Phule Pune University and a professional degree of Company Secretary from the Institute of Company Secretaries of India (ICSI). He has also completed his LL.B and holds a Diploma in Labour Laws & Labour Works and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements/documents.</p>
     </div>
+  </div>
+</section>
 
-    <div class="team-member">
-      <h3>Tapan Shah (Tax Consultant)</h3>
-      <p>Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers services in bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, Tapan provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing financial outcomes. His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.</p>
-    </div>
-  </section>
+<script>
+  function toggleAccordion(button) {
+    const content = button.nextElementSibling;
+    const arrow = button.querySelector('.arrow');
+    content.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-90');
+  }
+</script>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<style>
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+</style>
 
-  <footer>
-    <p>&copy; 2025 Complimate Advisory Services. All Rights Reserved.</p>
-  </footer>
-</body>
-</html>
 
 
