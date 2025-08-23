@@ -1,171 +1,194 @@
-<section id="services" class="py-16 bg-gradient-to-b from-blue-50 to-white">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Services</h2>
-    <div class="space-y-4">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CompliMate</title>
+  <style>
+    /* ===== Global Theme (Corporate Blue Gradient) ===== */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #004e92, #000428);
+      color: #fff;
+    }
 
-      <!-- Formation and Conversion -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Formation and Conversion
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Formation of Private Limited Companies <br>
-          • Formation of Public Limited Companies <br>
-          • Formation of Section 8 Companies <br>
-          • Formation of Limited Liability Partnership <br>
-          • Conversion of Partnership Firm into Private or Public Limited Company <br>
-          • Conversion of Private Limited Companies to Public Limited Companies and vice versa <br>
-          • Conversion of Private Limited Companies into LLP
-        </div>
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      color: #d0d0d0;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    /* ===== Accordion Styling ===== */
+    .accordion {
+      margin: 10px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .accordion-header {
+      cursor: pointer;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .accordion-header:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .accordion-header::after {
+      content: "▶";
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .accordion-header.active::after {
+      transform: rotate(90deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+    }
+
+    .accordion-content ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/complimate.png" alt="CompliMate Logo"/>
+    <h1>CompliMate</h1>
+    <p>Compliance, Simplified.</p>
+  </header>
+
+  <main>
+    <h2>Our Services</h2>
+
+    <!-- Service 1 -->
+    <div class="accordion">
+      <div class="accordion-header">ROC Filing Services</div>
+      <div class="accordion-content">
+        <ul>
+          <li>AOC-4 Filing Automation</li>
+          <li>MGT-7A Filing Automation</li>
+          <li>LLP Form 8 Filing</li>
+          <li>DIR-3 KYC</li>
+          <li>XBRL Filing</li>
+        </ul>
       </div>
-
-      <!-- Company Law & Secretarial Compliances -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Company Law & Secretarial Compliances
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Board, Shareholders, Creditors, AGM/EGM compliances <br>
-          • Filing of Annual Returns with MCA <br>
-          • Maintenance of Minutes Books and Registers <br>
-          • Statutory Meeting & Report compliances <br>
-          • Change of name or address of Companies/LLP <br>
-          • Alteration of share capital <br>
-          • Issue / Allotment / Transfer / Transmission of shares <br>
-          • Alteration of main object of Companies <br>
-          • Appointment & Resignation of Directors <br>
-          • Inter-corporate Investments & Loans <br>
-          • Creation, Satisfaction & Registration of charges <br>
-          • Drafting of Reports (Director’s Report, Corporate Governance, Annual Report) <br>
-          • Investor Grievances & Dividend Compliance <br>
-          • Closure of Companies under Fast Track Exit <br>
-          • DIN Compliances, Secretarial Audit, XBRL Filing <br>
-          • Legal Opinions & Petition Drafting <br>
-          • SEBI/Stock Exchange compliances <br>
-          • Search Reports for Banks
-        </div>
-      </div>
-
-      <!-- FEMA, RBI & NBFC Matters -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          FEMA, RBI & NBFC Matters
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Advisory on FEMA and RBI Compliances <br>
-          • Reporting of FDI, ODI, ECB <br>
-          • NBFC Incorporation & Compliances <br>
-          • Compounding Applications with RBI <br>
-          • FEMA related Approvals
-        </div>
-      </div>
-
-      <!-- Compliance Audit -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Compliance Audit
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Secretarial Audit under Companies Act <br>
-          • Due Diligence Reports <br>
-          • Corporate Governance Audit <br>
-          • Internal Audit of Systems and Processes
-        </div>
-      </div>
-
-      <!-- Corporate Restructuring & Advisory -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Corporate Restructuring & Advisory
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Mergers, Amalgamations & Demergers <br>
-          • Joint Ventures, Takeovers, Buybacks <br>
-          • ESOPs and Shareholders Agreements <br>
-          • Valuation, Drafting & Structuring Advisory
-        </div>
-      </div>
-
-      <!-- Labour Laws Compliances -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Labour Laws Compliances
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Provident Fund (PF) Compliances <br>
-          • Employees State Insurance (ESI) Compliances <br>
-          • Professional Tax & Labour Welfare Fund Compliances <br>
-          • Shops & Establishment Act Compliances
-        </div>
-      </div>
-
-      <!-- Intellectual Property Rights -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Intellectual Property Rights
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Trademark Registration & Renewal <br>
-          • Copyright Registration <br>
-          • Drafting of IPR Agreements <br>
-          • Advisory on IP Protection
-        </div>
-      </div>
-
-      <!-- Other Services -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Other Services
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Drafting & Vetting of Agreements <br>
-          • Legal Due Diligence <br>
-          • Business Advisory <br>
-          • Start-up Advisory and Fundraising Compliance
-        </div>
-      </div>
-
-      <!-- Accounting, Auditing & Taxation -->
-      <div class="border border-gray-200 rounded-lg shadow-sm">
-        <button class="flex justify-between items-center w-full px-6 py-4 text-lg font-semibold text-left text-gray-800 hover:bg-blue-100 focus:outline-none" onclick="toggleAccordion(this)">
-          Accounting, Auditing & Taxation
-          <span class="arrow transition-transform duration-300">▶</span>
-        </button>
-        <div class="hidden px-6 pb-4 text-gray-600">
-          • Bookkeeping & Accounting <br>
-          • Statutory & Internal Audits <br>
-          • GST Registration & Compliances <br>
-          • Income Tax Filing & Advisory <br>
-          • TDS, Advance Tax & Related Compliances
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
 
-<script>
-  function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const arrow = button.querySelector('.arrow');
-    content.classList.toggle('hidden');
-    arrow.classList.toggle('rotate-90');
-  }
-</script>
+    <!-- Service 2 -->
+    <div class="accordion">
+      <div class="accordion-header">Company Formation</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Private Limited Company Incorporation</li>
+          <li>Section 8 Company Formation</li>
+          <li>LLP Incorporation</li>
+          <li>One Person Company (OPC)</li>
+        </ul>
+      </div>
+    </div>
 
-<style>
-  .rotate-90 {
-    transform: rotate(90deg);
-  }
-</style>
+    <!-- Service 3 -->
+    <div class="accordion">
+      <div class="accordion-header">Compliance Management</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Annual ROC Filings</li>
+          <li>Board Meeting & Resolution Drafting</li>
+          <li>Event Based Filings</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="accordion">
+      <div class="accordion-header">Advisory & Consultancy</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Corporate Law Advisory</li>
+          <li>Due Diligence Support</li>
+          <li>Compliance Health Check</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 CompliMate. All rights reserved.
+  </footer>
+
+  <script>
+    // Accordion Toggle
+    document.querySelectorAll(".accordion-header").forEach(header => {
+      header.addEventListener("click", () => {
+        header.classList.toggle("active");
+        const content = header.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
 
 
 
