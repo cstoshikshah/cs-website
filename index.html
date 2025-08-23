@@ -1,329 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CompliMate — Compliance, Simplified.</title>
-<style>
-  :root{
-    --bg1:#0d47a1; --bg2:#1976d2; --card:rgba(255,255,255,.10);
-    --card-2:rgba(255,255,255,.14); --text:#ffffff; --muted:#dbe8ff;
-    --accent:#1abc9c; --shadow:0 10px 30px rgba(0,0,0,.25);
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-    color:var(--text);
-    background:linear-gradient(135deg,var(--bg1),var(--bg2));
-    min-height:100dvh;
-  }
-  /* Header */
-  header{
-    position:sticky; top:0; z-index:10;
-    background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid rgba(255,255,255,.15);
-  }
-  .wrap{max-width:1100px;margin:auto;padding:0 16px}
-  .bar{display:flex;align-items:center;gap:16px;padding:14px 0}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
-  .brand img{height:42px;width:auto;display:block}
-  .brand h1{font-size:20px;margin:0;font-weight:700;letter-spacing:.2px}
-  nav{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
-  nav a{color:var(--text);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
-  nav a:hover{background:var(--card)}
-  .tagline{font-size:12px;color:var(--muted);margin-left:54px;margin-top:-8px;margin-bottom:10px}
-
-  /* Hero */
-  .hero{padding:28px 0 6px}
-  .hero-card{
-    background:var(--card); border:1px solid rgba(255,255,255,.15); border-radius:16px;
-    box-shadow:var(--shadow); padding:22px; text-align:center;
-  }
-  .hero-card h2{margin:0 0 6px;font-size:26px}
-  .hero-card p{margin:0;color:var(--muted)}
-
-  /* Sections */
-  section{padding:28px 0}
-  .section-card{
-    background:var(--card); border:1px solid rgba(255,255,255,.15); border-radius:16px;
-    padding:20px; box-shadow:var(--shadow);
-  }
-  .section-title{margin:0 0 14px;font-size:22px;text-align:center}
-  .grid{display:grid;gap:16px}
-  @media (min-width:800px){ .grid-2{grid-template-columns:1fr 1fr} }
-
-  /* Collapsible (using <details>) */
-  details{
-    background:var(--card-2);
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:12px; overflow:hidden;
-  }
-  details + details{margin-top:10px}
-  summary{
-    list-style:none; cursor:pointer; padding:14px 16px; font-weight:700;
-    display:flex; align-items:center; gap:10px; position:relative;
-    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
-  }
-  /* Arrow */
-  summary::marker{display:none}
-  .arrow{display:inline-block; transition:transform .25s; font-size:14px}
-  details[open] .arrow{transform:rotate(90deg)}
-  .panel{padding:12px 16px 18px; color:#f2f6ff}
-  .panel ul{margin:0; padding-left:20px}
-  .panel li{margin:6px 0}
-
-  /* People cards */
-  .person{
-    background:var(--card-2);
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:12px; padding:18px
-  }
-  .person h3{margin:0 0 6px}
-  .person .role{color:var(--muted); font-weight:600; margin-bottom:8px}
-
-  /* Contact */
-  .contact-form{
-    display:grid; gap:12px; max-width:640px; margin:0 auto
-  }
-  .contact-form input,.contact-form textarea{
-    width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.08); color:#fff
-  }
-  .contact-form button{
-    padding:12px 16px; border:0; border-radius:10px; background:var(--accent); color:#001a16;
-    font-weight:800; cursor:pointer
-  }
-  .contact-form button:hover{filter:brightness(.95)}
-  footer{padding:28px 0; text-align:center; color:var(--muted)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompliMate - Compliance, Simplified</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0d47a1, #1976d2);
+      color: #fff;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffeb3b;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #ffeb3b;
+      padding-bottom: 5px;
+    }
+    .accordion {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 5px 0;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .panel {
+      display: none;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      margin-bottom: 5px;
+    }
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    footer {
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .contact-info {
+      line-height: 1.8;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="bar">
-      <a class="brand" href="#home">
-        <img src="images/complimate.png" alt="CompliMate logo" />
+  <header>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="images/complimate.png" alt="CompliMate Logo">
+      <div>
         <h1>CompliMate</h1>
-      </a>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#people">People</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-    <div class="tagline">Compliance, Simplified.</div>
-  </div>
-</header>
-
-<main id="home" class="wrap">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-card">
-      <h2>Your trusted partner in Corporate Law, Secretarial, FEMA and Tax Compliance</h2>
-      <p>End-to-end support from incorporation to ongoing governance, reporting and advisory.</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-card">
-      <h2 class="section-title">Our Services</h2>
-
-      <!-- 1. Formation & Conversion -->
-      <details open>
-        <summary><span class="arrow">▶</span> Formation and Conversion</summary>
-        <div class="panel">
-          <ul>
-            <li>Formation of Private Limited Companies</li>
-            <li>Formation of Public Limited Companies</li>
-            <li>Formation of Section 8 Companies</li>
-            <li>Formation of Limited Liability Partnership</li>
-            <li>Conversion of Partnership Firm into Private or Public Limited Company</li>
-            <li>Conversion of Private Limited Companies to Public Limited Companies and vice versa</li>
-            <li>Conversion of Private Limited Companies into LLP</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 2. Company Law & Secretarial Compliances -->
-      <details open>
-        <summary><span class="arrow">▶</span> Company Law and Secretarial Compliances</summary>
-        <div class="panel">
-          <ul>
-            <li>Compliances relating to meetings of Board of Directors, Shareholders, Creditors, Annual General Meetings and Extra Ordinary General Meetings.</li>
-            <li>Filing of Annual Returns with the Ministry of Corporate Affairs and related legal documentation.</li>
-            <li>Maintenance of Minutes books and Statutory Registers.</li>
-            <li>Compliances related to Statutory meeting and statutory report.</li>
-            <li>Change in the name or address of Companies / LLP.</li>
-            <li>Changing the authorized / paid up share capital of Companies.</li>
-            <li>Issue / Allotment of shares and related compliances.</li>
-            <li>Transfer / transmission of shares.</li>
-            <li>Alteration of main object of Companies.</li>
-            <li>Appointment and Resignation of Directors.</li>
-            <li>Inter Corporate Investments and Loans.</li>
-            <li>Advising on creation, satisfaction and registration of charges.</li>
-            <li>Drafting of Director’s Report, Corporate Governance Report, Annual Report.</li>
-            <li>Matters related to Investor Grievances.</li>
-            <li>Payment of Dividend and related compliances.</li>
-            <li>Closure of Companies under Fast Track Exit Mode.</li>
-            <li>Director Identification Number Compliances.</li>
-            <li>Secretarial Compliance Audit.</li>
-            <li>XBRL filing.</li>
-            <li>Preparation of Legal Opinions.</li>
-            <li>Drafting of petitions.</li>
-            <li>Compliances with National Stock Exchange and Bombay Stock Exchange regarding clauses of SEBI (Listing Obligations and Disclosure Requirements) Regulations.</li>
-            <li>Preparation of Search Reports with respect to Banks.</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 3. FEMA -->
-      <details open>
-        <summary><span class="arrow">▶</span> Services under Foreign Exchange Management Act (FEMA)</summary>
-        <div class="panel">
-          <ul>
-            <li>Reporting to RBI about receipt of Foreign Inward Remittance</li>
-            <li>Preparation of FC-GPR for allotment of shares</li>
-            <li>Preparation of Form FC-TRS</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 4. Compliance Audit -->
-      <details open>
-        <summary><span class="arrow">▶</span> Compliance Audit</summary>
-        <div class="panel">
-          Conducting compliance and secretarial audit for and on behalf of the corporates which helps to strengthen the Corporate Governance in an organization. Compliance Audit assists the Board of Directors on understanding the status of the statutory compliances, internal control systems, management information systems and its effectiveness in the proper and transparent governance of the organization.
-        </div>
-      </details>
-
-      <!-- 5. Corporate Advisory -->
-      <details open>
-        <summary><span class="arrow">▶</span> Corporate Advisory Services</summary>
-        <div class="panel">
-          <ul>
-            <li>Legal and regulatory aspects of doing business in India</li>
-            <li>Requisite approvals required from the Foreign Investment Promotion Board (FIPB) and Reserve Bank of India (RBI)</li>
-            <li>Corporate Governance thereby enhancing shareholder value</li>
-            <li>Transaction documents and agreements such as employment, consultancy, confidentiality, joint ventures, shareholders and subscription agreements.</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 6. Labour Laws -->
-      <details open>
-        <summary><span class="arrow">▶</span> Labour Laws</summary>
-        <div class="panel">
-          <ul>
-            <li>Employment Agreements</li>
-            <li>Advising on applicability of various labour laws in setting up operations in India</li>
-            <li>ESI and Provident Fund Compliances i.e. payments and returns.</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 7. IPR -->
-      <details open>
-        <summary><span class="arrow">▶</span> Intellectual Property Rights</summary>
-        <div class="panel">
-          <ul>
-            <li>Registration of Trademarks</li>
-            <li>Registration of Copyrights</li>
-            <li>Registration of Patents</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 8. Other Services -->
-      <details open>
-        <summary><span class="arrow">▶</span> Other Services</summary>
-        <div class="panel">
-          <ul>
-            <li>Goods &amp; Service Tax (GST) and related compliances</li>
-            <li>Project Reports</li>
-            <li>Bank Reconciliation</li>
-            <li>Importer Exporter Code (IEC) application</li>
-            <li>Registration of Partnership Firms, Co-operative Societies and Trusts</li>
-            <li>Due Diligence</li>
-            <li>PAN / TAN Application</li>
-            <li>Shop Act License</li>
-            <li>Drafting of various contracts</li>
-            <li>Drafting of Privacy Policies, Pricing Policies, End User License Agreements, Terms of Use, etc. for websites and software products.</li>
-            <li>Registration under Startup India Scheme</li>
-            <li>Food License</li>
-            <li>Shop Act</li>
-            <li>Udyam Aadhar</li>
-            <li>IEC Code</li>
-            <li>Startup Recognition (DPIIT)</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- 9. Accounting & Tax (additional list you provided) -->
-      <details open>
-        <summary><span class="arrow">▶</span> Accounting, Tax &amp; Audit</summary>
-        <div class="panel">
-          <ul>
-            <li>Bookkeeping &amp; Accounting</li>
-            <li>Income Tax Compliance</li>
-            <li>TDS &amp; TCS Compliance</li>
-            <li>GST Compliance &amp; Advisory</li>
-            <li>Professional Tax (PT) Compliance</li>
-            <li>PTEC / PTRC Compliance</li>
-            <li>Statutory &amp; Tax audit</li>
-            <li>Representation before Tax Authorities</li>
-            <li>Financial Reporting &amp; MIS</li>
-            <li>Tax Planning &amp; Advisory</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- PEOPLE -->
-  <section id="people">
-    <div class="section-card">
-      <h2 class="section-title">People</h2>
-      <div class="grid grid-2">
-        <!-- Toshik -->
-        <div class="person">
-          <h3>CS Toshik Shah <span class="role">(B.Com, CS, LL.B)</span></h3>
-          <p>
-            CS Toshik Shah holds a Bachelor of Commerce degree form Savitribai Phule Pune University and a professional degree of Company Secretary from the Institute of Company Secretaries of India (ICSI). He has also done his LL.B and also holds a Diploma in Labour Laws &amp; Labour Works and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements / documents.
-          </p>
-        </div>
-        <!-- Tapan -->
-        <div class="person">
-          <h3>Tapan Shah <span class="role">Tax Consultant</span></h3>
-          <p>
-            Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers a wide range of services, including bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, Tapan also provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing their financial outcomes. His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.
-          </p>
-        </div>
+        <h2>Compliance, Simplified.</h2>
       </div>
     </div>
-  </section>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#people">People</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-card">
-      <h2 class="section-title">Contact</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+  <div class="container" id="home">
+    <h2>Welcome to CompliMate</h2>
+    <p>CompliMate is your trusted partner in simplifying compliance. We bring automation and expertise together to make corporate compliance faster, easier, and stress-free.</p>
+  </div>
+
+  <div class="container" id="people">
+    <h2>People</h2>
+    <p>Meet the professionals behind CompliMate. Our team brings deep expertise in corporate law, secretarial compliance, and automation tools.</p>
+    <ul>
+      <li><strong>Toshik H. Shah</strong> – Founder & Company Secretary</li>
+      <li><strong>Team Members</strong> – Dedicated professionals supporting our clients</li>
+    </ul>
+  </div>
+
+  <div class="container" id="services">
+    <h2>Our Services</h2>
+
+    <button class="accordion">ROC Compliance & Filing ▼</button>
+    <div class="panel">
+      <ul>
+        <li>AOC-4 Filing Automation</li>
+        <li>MGT-7A Filing</li>
+        <li>DIR-3 KYC</li>
+        <li>LLP Form 8</li>
+        <li>XBRL Filing</li>
+      </ul>
     </div>
-  </section>
-</main>
 
-<footer>
-  © CompliMate — Compliance, Simplified.
-</footer>
+    <button class="accordion">Incorporation & Registrations ▼</button>
+    <div class="panel">
+      <ul>
+        <li>Company Incorporation</li>
+        <li>LLP Incorporation</li>
+        <li>Section 8 Company Incorporation</li>
+        <li>Trademark Filing</li>
+      </ul>
+    </div>
 
-<!-- (Optional) keep details open on load; no extra JS needed for <details> -->
+    <button class="accordion">Corporate Secretarial Services ▼</button>
+    <div class="panel">
+      <ul>
+        <li>Annual Filings</li>
+        <li>Board Meetings & Minutes</li>
+        <li>Share Allotment & Transfer</li>
+        <li>Change in Directors</li>
+        <li>Increase in Capital</li>
+      </ul>
+    </div>
+
+    <button class="accordion">Other Services ▼</button>
+    <div class="panel">
+      <ul>
+        <li>Due Diligence</li>
+        <li>Legal Drafting</li>
+        <li>Corporate Governance Advisory</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <p class="contact-info">
+      📞 Mobile: <a href="tel:+919960860828" style="color:#ffeb3b;">+91 9960860828</a><br>
+      📧 Email: <a href="mailto:cstoshikshah@gmail.com" style="color:#ffeb3b;">cstoshikshah@gmail.com</a>
+    </p>
+  </div>
+
+  <footer>
+    <p>© 2025 CompliMate. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
