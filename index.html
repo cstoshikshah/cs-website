@@ -8,163 +8,208 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
+      line-height: 1.6;
+      background-color: #f9f9f9;
       color: #333;
     }
     header {
-      background-color: #f9f9f9;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-    }
-    header img {
-      height: 60px;
-      margin-right: 15px;
+      background: #003366;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header h1 {
       margin: 0;
-      font-size: 24px;
-      color: #222;
+      font-size: 1.8rem;
     }
     nav {
-      background-color: #f1f1f1;
-      padding: 10px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
+      margin-top: 0.5rem;
     }
-    nav a {
-      margin: 0 15px;
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      color: #fff;
       text-decoration: none;
-      color: #333;
       font-weight: bold;
     }
-    section {
-      padding: 40px 20px;
+    nav ul li:hover > a {
+      text-decoration: underline;
     }
-    .section-gray {
-      background-color: #f8f8f8;
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #004080;
+      padding: 0.5rem 0;
+      list-style: none;
+      margin: 0;
+      border-radius: 4px;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li {
+      width: 200px;
+      padding: 0.5rem 1rem;
+    }
+    nav ul li ul li a {
+      color: #fff;
+      font-weight: normal;
+    }
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    section:nth-child(even) {
+      background: #f0f0f0;
     }
     h2 {
-      text-align: center;
-      margin-bottom: 20px;
+      color: #003366;
+      margin-bottom: 1rem;
     }
     .team {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 2rem;
+      flex-wrap: wrap;
+      text-align: left;
     }
     .team-member {
-      flex: 1 1 300px;
-      background-color: #fff;
-      border: 1px solid #ddd;
+      background: #fff;
+      padding: 1.5rem;
       border-radius: 8px;
-      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 400px;
     }
-    footer {
-      background-color: #f1f1f1;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      border-top: 1px solid #ddd;
+    .team-member h3 {
+      margin-top: 0;
+      color: #003366;
     }
     form {
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
+      text-align: left;
     }
     form input, form textarea {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
     }
     form button {
-      background-color: #333;
+      background: #003366;
       color: #fff;
       border: none;
-      padding: 12px 20px;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
       cursor: pointer;
-      border-radius: 5px;
     }
     form button:hover {
-      background-color: #555;
+      background: #004080;
+    }
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Logo placeholder -->
-    <img src="logo.png" alt="Complimate Advisory Services Logo">
     <h1>Complimate Advisory Services</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li>
+          <a href="#services">Services ▾</a>
+          <ul>
+            <li><a href="#services">Company Incorporation</a></li>
+            <li><a href="#services">Annual Filings</a></li>
+            <li><a href="#services">Secretarial Compliance</a></li>
+            <li><a href="#services">Drafting of Agreements</a></li>
+            <li><a href="#services">Legal Advisory</a></li>
+            <li><a href="#services">Accounting Services</a></li>
+            <li><a href="#services">Audit</a></li>
+            <li><a href="#services">Book Keeping</a></li>
+            <li><a href="#services">Representation before Tax Authorities</a></li>
+            <li><a href="#services">Financial Reporting</a></li>
+            <li><a href="#services">MIS</a></li>
+          </ul>
+        </li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#team">Team</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
 
   <section id="about">
     <h2>About Us</h2>
-    <p style="text-align:center; max-width: 800px; margin: 0 auto;">
-      Complimate Advisory Services provides comprehensive professional solutions in secretarial compliance, taxation, accounting, and advisory. 
-      We aim to simplify compliance and empower businesses with expert guidance.
-    </p>
-  </section>
-
-  <section id="team" class="section-gray">
-    <h2>Our Team</h2>
-    <div class="team">
-      <div class="team-member">
-        <h3>CS Toshik Shah (B.Com, CS, LL.B)</h3>
-        <p>
-          CS Toshik Shah holds a Bachelor of Commerce degree form Savitribai Phule Pune University and a professional degree of Company Secretary 
-          from the Institute of Company Secretaries of India (ICSI). He has also done his LL.B and also holds a Diploma in Labour Laws & Labour Works 
-          and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements / documents.
-        </p>
-      </div>
-      <div class="team-member">
-        <h3>Tapan Shah (Tax Consultant)</h3>
-        <p>
-          Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers a wide range of services, 
-          including bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, 
-          Tapan also provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing their financial outcomes. 
-          His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.
-        </p>
-      </div>
-    </div>
+    <p>Complimate Advisory Services is a professional firm committed to providing comprehensive Corporate Secretarial, Legal, and Financial solutions. We combine deep expertise with a client-focused approach to deliver value-driven services for businesses and individuals.</p>
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
-    <ul style="max-width: 600px; margin: 0 auto;">
+    <p>We provide a wide spectrum of professional services including:</p>
+    <ul style="max-width:600px; margin: 0 auto; text-align:left;">
+      <li>Company Incorporation</li>
+      <li>Annual Filings</li>
       <li>Secretarial Compliance</li>
-      <li>Drafting of Agreements & Documents</li>
+      <li>Drafting of Agreements / Legal Documentation</li>
+      <li>Legal Advisory</li>
       <li>Accounting Services</li>
       <li>Audit</li>
-      <li>Bookkeeping</li>
+      <li>Book Keeping</li>
       <li>Representation before Tax Authorities</li>
       <li>Financial Reporting</li>
-      <li>Management Information Systems (MIS)</li>
+      <li>Management Information System (MIS)</li>
     </ul>
   </section>
 
-  <section id="contact" class="section-gray">
+  <section id="team">
+    <h2>Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <h3>CS Toshik Shah (BCom, CS, LLB)</h3>
+        <p>CS Toshik Shah holds a Bachelor of Commerce degree from Savitribai Phule Pune University and a professional degree of Company Secretary from the Institute of Company Secretaries of India (ICSI). He has also done his LL.B and holds a Diploma in Labour Laws & Labour Works and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements / documents.</p>
+      </div>
+      <div class="team-member">
+        <h3>Tapan Shah (Tax Consultant)</h3>
+        <p>Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers a wide range of services, including bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, Tapan also provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing their financial outcomes. His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Complimate Advisory Services. All rights reserved.</p>
+    <p>&copy; 2025 Complimate Advisory Services. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
+
 
