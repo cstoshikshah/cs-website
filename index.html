@@ -1,199 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CompliMate - Compliance, Simplified</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>T.H. Shah & Associates — Company Secretaries</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0d47a1, #1976d2);
-      color: #fff;
+    :root{
+      --brand1:#1a73e8; /* light blue */
+      --brand2:#003a8c; /* deep blue */
+      --accent:#ffd666; /* warm gold for highlights */
+      --text:#1f2937;  /* slate */
+      --card-bg:rgba(255,255,255,0.92);
+      --frost:rgba(255,255,255,0.08);
     }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px 20px;
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+      color:var(--text);
+      background:linear-gradient(135deg,var(--brand1),var(--brand2)) fixed;
     }
-    header img {
-      height: 50px;
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:linear-gradient(135deg, rgba(26,115,232,0.85), rgba(0,58,140,0.85));
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
     }
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-    header h2 {
-      margin: 0;
-      font-size: 14px;
-      font-weight: normal;
-    }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffeb3b;
-    }
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      border-bottom: 2px solid #ffeb3b;
-      padding-bottom: 5px;
-    }
-    .accordion {
-      background: rgba(255, 255, 255, 0.1);
-      margin: 5px 0;
-      padding: 10px;
-      cursor: pointer;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 18px;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .accordion:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    .panel {
-      display: none;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 10px;
-      margin-bottom: 5px;
-    }
-    .panel ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    footer {
-      background: rgba(0, 0, 0, 0.3);
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-    .contact-info {
-      line-height: 1.8;
-    }
+    .container{max-width:1100px; margin:0 auto; padding:0 18px}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{height:38px; width:auto; object-fit:contain; filter:drop-shadow(0 1px 1px rgba(0,0,0,0.2));}
+    .brand .title{font-weight:700; font-size:1.1rem; letter-spacing:.2px}
+    .menu a{color:#fff; text-decoration:none; margin-left:18px; font-weight:600}
+    .menu a:hover{opacity:.9; text-decoration:underline}
+
+    /* Hero */
+    .hero{ padding:64px 0 36px; color:#fff; text-align:center }
+    .hero h1{ margin:0 0 10px; font-size:clamp(1.6rem,2.2rem,2.6rem)}
+    .hero p{ margin:0; opacity:.95 }
+
+    /* Section cards */
+    section{ padding:28px 18px }
+    .card{ background:var(--card-bg); border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.10); padding:26px; margin:16px auto; max-width:1100px }
+    h2.section-title{ margin:0 0 14px; color:#0a3d62; text-align:center }
+    h3{ color:#0a3d62; margin:18px 0 8px }
+    p{ margin:8px 0 }
+    ol, ul{ margin:6px 0 14px 22px }
+
+    /* Details (collapsible) */
+    details{ background:var(--frost); border:1px solid rgba(255,255,255,0.35); border-radius:12px; margin:12px 0; padding:12px 14px }
+    details[open]{ background:rgba(255,255,255,0.18) }
+    summary{ cursor:pointer; font-weight:700; color:#0a3d62; outline:none }
+    summary::-webkit-details-marker{ display:none }
+    summary:after{ content:"▸"; float:right; transition:transform .2s ease }
+    details[open] summary:after{ transform:rotate(90deg) }
+    details ul{ margin-left:18px }
+
+    /* Contact */
+    .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:22px }
+    @media (max-width: 820px){ .contact-grid{ grid-template-columns:1fr } }
+    .info p{ margin:6px 0 }
+
+    form .row{ display:flex; gap:12px }
+    form .row > *{ flex:1 }
+    label{ font-weight:600; font-size:.92rem }
+    input, textarea{ width:100%; padding:11px 12px; border-radius:10px; border:1px solid #d1d5db; background:#fff; font:inherit }
+    textarea{ min-height:120px; resize:vertical }
+    .btn{ background:#0a3d62; color:#fff; border:none; padding:12px 16px; border-radius:10px; font-weight:700; cursor:pointer }
+    .btn:hover{ filter:brightness(1.05) }
+
+    /* Footer */
+    footer{ color:#fff; text-align:center; padding:24px 16px; opacity:.95 }
+    .footer-logos{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:6px }
+    .badge{ font-size:.8rem; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.16) }
   </style>
 </head>
 <body>
 
-  <header>
-    <div style="display:flex; align-items:center; gap:10px;">
-      <img src="images/complimate.png" alt="CompliMate Logo">
-      <div>
-        <h1>CompliMate</h1>
-        <h2>Compliance, Simplified.</h2>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <!-- Upload icsi-logo.png to your repo root for this to show -->
+        <img src="icsi-logo.png" alt="ICSI" onerror="this.style.display='none'" />
+        <div class="title">T.H. Shah & Associates</div>
       </div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#people">People</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <div class="container" id="home">
-    <h2>Welcome to CompliMate</h2>
-    <p>CompliMate is your trusted partner in simplifying compliance. We bring automation and expertise together to make corporate compliance faster, easier, and stress-free.</p>
-  </div>
-
-  <div class="container" id="people">
-    <h2>People</h2>
-    <p>Meet the professionals behind CompliMate. Our team brings deep expertise in corporate law, secretarial compliance, and automation tools.</p>
-    <ul>
-      <li><strong>Toshik H. Shah</strong> – Founder & Company Secretary</li>
-      <li><strong>Team Members</strong> – Dedicated professionals supporting our clients</li>
-    </ul>
-  </div>
-
-  <div class="container" id="services">
-    <h2>Our Services</h2>
-
-    <button class="accordion">ROC Compliance & Filing ▼</button>
-    <div class="panel">
-      <ul>
-        <li>AOC-4 Filing Automation</li>
-        <li>MGT-7A Filing</li>
-        <li>DIR-3 KYC</li>
-        <li>LLP Form 8</li>
-        <li>XBRL Filing</li>
-      </ul>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Corporate Compliance. Simplified.</h1>
+      <p>Company Secretaries in Practice • Pune</p>
     </div>
+  </section>
 
-    <button class="accordion">Incorporation & Registrations ▼</button>
-    <div class="panel">
-      <ul>
-        <li>Company Incorporation</li>
-        <li>LLP Incorporation</li>
-        <li>Section 8 Company Incorporation</li>
-        <li>Trademark Filing</li>
-      </ul>
+  <!-- About -->
+  <section id="about">
+    <div class="card">
+      <h2 class="section-title">About Us</h2>
+      <p><strong>T H Shah &amp; Associates</strong> is a Practicing Company Secretaries Firm located in Pune. Established in the year 2016, the firm provides quality services for solving various Corporate Law and Secretarial matters. The firm also endeavors to widen and maintain its client base by adhering to the highest professional standards. The people associated with the firm strive to cross new horizons by exploiting new avenues of services through new learning. For this purpose, they keep themselves abreast with the frequent changes in law.</p>
+      <h3>Vision</h3>
+      <p>To be a professional services firm, providing cost effective legal and business solutions through a community of learned and qualified individuals.</p>
+      <h3>Mission</h3>
+      <ol>
+        <li><strong>Excellence</strong>: We define excellence as “being the best at what we do” by imbibing the spirit of constant improvement in all our endeavors to achieve high quality results and set standards.</li>
+        <li><strong>Professionalism</strong>: As a professional organization, we develop and sustain the competence of our people. We are objective and fair in our approach, consistent in our performance and own responsibility for our actions.</li>
+        <li><strong>Ethics</strong>: We act with utmost integrity and believe in honesty and respect for one and all. We believe it as our responsibility to be transparent and straight forward in our dealings.</li>
+        <li><strong>Transparency</strong>: We believe in providing a service with transparency and believe in fast and in time communication with the clients.</li>
+      </ol>
     </div>
+  </section>
 
-    <button class="accordion">Corporate Secretarial Services ▼</button>
-    <div class="panel">
-      <ul>
-        <li>Annual Filings</li>
-        <li>Board Meetings & Minutes</li>
-        <li>Share Allotment & Transfer</li>
-        <li>Change in Directors</li>
-        <li>Increase in Capital</li>
-      </ul>
+  <!-- Services -->
+  <section id="services">
+    <div class="card">
+      <h2 class="section-title">Our Services</h2>
+
+      <details>
+        <summary>1) Formation and Conversion</summary>
+        <ul>
+          <li>Formation of Private Limited Companies</li>
+          <li>Formation of Public Limited Companies</li>
+          <li>Formation of Section 8 Companies</li>
+          <li>Formation of Limited Liability Partnership</li>
+          <li>Conversion of Partnership Firm into Private or Public Limited Company</li>
+          <li>Conversion of Private Limited Companies to Public Limited Companies and vice versa</li>
+          <li>Conversion of Private Limited Companies into LLP</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>2) Company Law and Secretarial Compliances</summary>
+        <ul>
+          <li>Compliances relating to meetings of Board of Directors, Shareholders, Creditors, Annual General Meetings and Extra Ordinary General Meetings.</li>
+          <li>Filing of Annual Returns with the Ministry of Corporate Affairs and related legal documentation.</li>
+          <li>Maintenance of Minutes books and Statutory Registers.</li>
+          <li>Compliances related to Statutory meeting and statutory report.</li>
+          <li>Change in the name or address of Companies / LLP.</li>
+          <li>Changing the authorized / paid up share capital of Companies.</li>
+          <li>Issue / Allotment of shares and related compliances.</li>
+          <li>Transfer / transmission of shares.</li>
+          <li>Alteration of main object of Companies.</li>
+          <li>Appointment and Resignation of Directors.</li>
+          <li>Inter Corporate Investments and Loans.</li>
+          <li>Advising on creation , satisfaction and registration of charges.</li>
+          <li>Drafting of Director’s Report , Corporate Governance Report , Annual Report.</li>
+          <li>Matters related to Investor Grievances.</li>
+          <li>Payment of Dividend and related compliances.</li>
+          <li>Closure of Companies under Fast Track Exit Mode.</li>
+          <li>Director Identification Number Compliances.</li>
+          <li>Secretarial Compliance Audit.</li>
+          <li>XBRL filing.</li>
+          <li>Preparation of Legal Opinions.</li>
+          <li>Drafting of petitions.</li>
+          <li>Compliances with National Stock Exchange and Bombay Stock Exchange regarding clauses of SEBI (Listing Obligations and Disclosure Requirements) Regulations.</li>
+          <li>Preparation of Search Reports with respect to Banks.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>3) Services under Foreign Exchange Management Act</summary>
+        <ul>
+          <li>Reporting to RBI about receipt of Foreign Inward Remittance</li>
+          <li>Preparation of FC-GPR for allotment of shares</li>
+          <li>Preparation of Form FCTRS</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>4) Compliance Audit</summary>
+        <p>Conducting compliance and secretarial audit for and on behalf of the corporates which helps to strengthen the Corporate Governance in an organization. Compliance Audit assists the Board of Directors on understanding the status of the statutory compliances, internal control systems, management information systems and its effectiveness in the proper and transparent governance of the organization.</p>
+      </details>
+
+      <details>
+        <summary>5) Corporate Advisory Services</summary>
+        <ul>
+          <li>Legal and regulatory aspects of doing business in India</li>
+          <li>Requisite approvals required from the Foreign Investment Promotion Board (FIPB) and Reserve Bank of India (RBI)</li>
+          <li>Corporate Governance thereby enhancing shareholder value</li>
+          <li>Transaction documents and agreements such as employment , consultancy  confidentiality , joint ventures , shareholders and subscription agreements.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>6) Labour Laws</summary>
+        <ul>
+          <li>Employment Agreements</li>
+          <li>Advising on applicability of various labour laws in setting up operations in India</li>
+          <li>ESI and Provident Fund Compliances i.e. payments and returns.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>7) Intellectual Property Rights</summary>
+        <ul>
+          <li>Registration of Trademarks</li>
+          <li>Registration of Copyrights</li>
+          <li>Registration of Patents</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>8) Other Services</summary>
+        <ul>
+          <li>Goods &amp; Service Tax (GST) and related compliances</li>
+          <li>Project Reports</li>
+          <li>Bank Reconciliation</li>
+          <li>Importer Exporter Code (IEC) application</li>
+          <li>Registration of Partnership Firms , Co-operative Societies and Trusts</li>
+          <li>Due Diligence</li>
+          <li>PAN / TAN Application</li>
+          <li>Shop Act License</li>
+          <li>Drafting of various contracts</li>
+          <li>Drafting of Privacy Policies , Pricing Policies , End User License Agreements , Terms of Use, etc. for websites and software products.</li>
+          <li>Registration under Startup India Scheme</li>
+          <li>Food License</li>
+          <li>Shop Act</li>
+          <li>Udyam Aadhar</li>
+          <li>IEC Code</li>
+          <li>Startup Recognition (DPIIT)</li>
+        </ul>
+      </details>
+
     </div>
+  </section>
 
-    <button class="accordion">Other Services ▼</button>
-    <div class="panel">
-      <ul>
-        <li>Due Diligence</li>
-        <li>Legal Drafting</li>
-        <li>Corporate Governance Advisory</li>
-      </ul>
+  <!-- Contact -->
+  <section id="contact">
+    <div class="card">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-grid">
+        <div class="info">
+          <p><strong>Office:</strong> A504, Eisha Pearl, Kondhwa Khurd, Pune - 411048</p>
+          <p><strong>Email:</strong> <a href="mailto:cstoshikshah@gmail.com">cstoshikshah@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+919960860828">+91 9960860828</a></p>
+          <p class="badge">Member — The Institute of Company Secretaries of India (ICSI)</p>
+        </div>
+        <form id="contactForm" autocomplete="on">
+          <div class="row">
+            <div>
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="e.g., Rohan Mehta" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91-XXXXXXXXXX" pattern="[+0-9\-() ]{7,}" />
+            </div>
+            <div>
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Inquiry subject" required />
+            </div>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+          </div>
+          <button class="btn" type="submit">Send Enquiry</button>
+          <p style="font-size:.9rem; opacity:.85; margin-top:8px">Submitting opens your email app with the details pre-filled.</p>
+        </form>
+      </div>
     </div>
-
-  </div>
-
-  <div class="container" id="contact">
-    <h2>Contact Us</h2>
-    <p class="contact-info">
-      📞 Mobile: <a href="tel:+919960860828" style="color:#ffeb3b;">+91 9960860828</a><br>
-      📧 Email: <a href="mailto:cstoshikshah@gmail.com" style="color:#ffeb3b;">cstoshikshah@gmail.com</a>
-    </p>
-  </div>
+  </section>
 
   <footer>
-    <p>© 2025 CompliMate. All Rights Reserved.</p>
+    <div class="container">
+      <div>&copy; 2025 T.H. Shah &amp; Associates • All Rights Reserved</div>
+      <div class="footer-logos">
+        <!-- ICSI logo will appear if you upload icsi-logo.png to the repo -->
+        <img src="icsi-logo.png" alt="ICSI" height="28" onerror="this.style.display='none'" />
+      </div>
+    </div>
   </footer>
 
   <script>
-    const acc = document.querySelectorAll(".accordion");
-    acc.forEach(btn => {
-      btn.addEventListener("click", function() {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
+    // Compose an email via mailto with form contents
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const to = 'cstoshikshah@gmail.com';
+      const sub = encodeURIComponent(subject || `Website enquiry from ${name}`);
+      const body = encodeURIComponent(
+        `New enquiry from website%0D%0A%0D%0A`+
+        `Name: ${name}%0D%0A`+
+        `Email: ${email}%0D%0A`+
+        `Phone: ${phone}%0D%0A`+
+        `Subject: ${subject}%0D%0A%0D%0A`+
+        `Message:%0D%0A${message}`
+      );
+      window.location.href = `mailto:${to}?subject=${sub}&body=${body}`;
+      this.reset();
     });
   </script>
-
 </body>
 </html>
