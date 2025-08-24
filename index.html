@@ -3,315 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>T.H. Shah & Associates — Company Secretaries</title>
+  <title>CompliMate — Compliance, Simplified.</title>
   <style>
     :root{
-      --brand1:#1a73e8; /* light blue */
-      --brand2:#003a8c; /* deep blue */
-      --accent:#ffd666; /* warm gold for highlights */
-      --text:#1f2937;  /* slate */
-      --card-bg:rgba(255,255,255,0.92);
-      --frost:rgba(255,255,255,0.08);
+      --blue1:#0d47a1; --blue2:#1976d2; --blue3:#42a5f5;
+      --glass:rgba(255,255,255,.12); --glass-2:rgba(255,255,255,.18);
+      --text:#ffffff; --muted:#e3f2fd; --ink:#0b1220; --accent:#1abc9c;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
     }
-    html{scroll-behavior:smooth}
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
-      line-height:1.65;
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
       color:var(--text);
-      background:linear-gradient(135deg,var(--brand1),var(--brand2)) fixed;
+      background:linear-gradient(135deg,var(--blue1),var(--blue2) 55%, var(--blue3));
+      min-height:100dvh;
     }
+    a{color:inherit}
+
     /* Header */
-    .site-header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter:saturate(1.2) blur(6px);
-      background:linear-gradient(135deg, rgba(26,115,232,0.85), rgba(0,58,140,0.85));
-      color:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    header{
+      position:sticky; top:0; z-index:20;
+      background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.15));
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.15);
     }
-    .container{max-width:1100px; margin:0 auto; padding:0 18px}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand img{height:38px; width:auto; object-fit:contain; filter:drop-shadow(0 1px 1px rgba(0,0,0,0.2));}
-    .brand .title{font-weight:700; font-size:1.1rem; letter-spacing:.2px}
-    .menu a{color:#fff; text-decoration:none; margin-left:18px; font-weight:600}
-    .menu a:hover{opacity:.9; text-decoration:underline}
+    .wrap{max-width:1100px;margin:auto;padding:0 16px}
+    .bar{display:flex;align-items:center;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+    .logo-placeholder{height:42px;width:42px;border-radius:10px;background:var(--glass-2);display:flex;align-items:center;justify-content:center;font-weight:800}
+    .brand h1{font-size:20px;margin:0;font-weight:800;letter-spacing:.2px}
+    .tagline{font-size:12px;color:var(--muted);margin-left:54px;margin-top:-8px;margin-bottom:10px}
+    nav{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+    nav a{color:var(--text);text-decoration:none;font-weight:700;padding:8px 12px;border-radius:10px}
+    nav a:hover{background:var(--glass)}
 
     /* Hero */
-    .hero{ padding:64px 0 36px; color:#fff; text-align:center }
-    .hero h1{ margin:0 0 10px; font-size:clamp(1.6rem,2.2rem,2.6rem)}
-    .hero p{ margin:0; opacity:.95 }
+    .hero{padding:28px 0 10px}
+    .hero-card{
+      background:var(--glass); border:1px solid rgba(255,255,255,.18); border-radius:16px;
+      box-shadow:var(--shadow); padding:22px; text-align:center;
+    }
+    .hero-card h2{margin:0 0 6px;font-size:26px}
+    .hero-card p{margin:0;color:var(--muted)}
 
-    /* Section cards */
-    section{ padding:28px 18px }
-    .card{ background:var(--card-bg); border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.10); padding:26px; margin:16px auto; max-width:1100px }
-    h2.section-title{ margin:0 0 14px; color:#0a3d62; text-align:center }
-    h3{ color:#0a3d62; margin:18px 0 8px }
-    p{ margin:8px 0 }
-    ol, ul{ margin:6px 0 14px 22px }
+    /* Sections */
+    section{padding:28px 0}
+    .section-card{background:var(--glass); border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:20px; box-shadow:var(--shadow)}
+    .section-title{margin:0 0 14px;font-size:22px;text-align:center}
 
-    /* Details (collapsible) */
-    details{ background:var(--frost); border:1px solid rgba(255,255,255,0.35); border-radius:12px; margin:12px 0; padding:12px 14px }
-    details[open]{ background:rgba(255,255,255,0.18) }
-    summary{ cursor:pointer; font-weight:700; color:#0a3d62; outline:none }
-    summary::-webkit-details-marker{ display:none }
-    summary:after{ content:"▸"; float:right; transition:transform .2s ease }
-    details[open] summary:after{ transform:rotate(90deg) }
-    details ul{ margin-left:18px }
+    /* Collapsibles via <details> */
+    details{background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18); border-radius:12px; overflow:hidden}
+    details + details{margin-top:10px}
+    summary{list-style:none; cursor:pointer; padding:14px 16px; font-weight:800; display:flex; align-items:center; gap:10px; background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.08))}
+    summary::-webkit-details-marker{display:none}
+    .arrow{display:inline-block; transition:transform .25s; font-size:14px}
+    details[open] .arrow{transform:rotate(90deg)}
+    .panel{padding:12px 16px 18px; color:#f2f6ff}
+    .panel ul{margin:0; padding-left:20px}
+    .panel li{margin:6px 0}
+
+    /* People */
+    .grid{display:grid;gap:16px}
+    @media (min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
+    .person{background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:18px; display:grid; grid-template-columns:72px 1fr; gap:14px}
+    .avatar{height:72px;width:72px;border-radius:16px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:900}
+    .person h3{margin:0 0 4px}
+    .role{color:var(--muted);font-weight:700;margin-bottom:8px}
 
     /* Contact */
-    .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:22px }
-    @media (max-width: 820px){ .contact-grid{ grid-template-columns:1fr } }
-    .info p{ margin:6px 0 }
+    .contact-grid{display:grid;gap:20px;grid-template-columns:1fr}
+    @media (min-width:880px){.contact-grid{grid-template-columns:1fr 1fr}}
+    .contact-form{display:grid;gap:12px}
+    .contact-form input,.contact-form textarea{width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08); color:#fff}
+    .contact-form button{padding:12px 16px; border:0; border-radius:10px; background:var(--accent); color:#001a16; font-weight:800; cursor:pointer}
+    .contact-form button:hover{filter:brightness(.95)}
 
-    form .row{ display:flex; gap:12px }
-    form .row > *{ flex:1 }
-    label{ font-weight:600; font-size:.92rem }
-    input, textarea{ width:100%; padding:11px 12px; border-radius:10px; border:1px solid #d1d5db; background:#fff; font:inherit }
-    textarea{ min-height:120px; resize:vertical }
-    .btn{ background:#0a3d62; color:#fff; border:none; padding:12px 16px; border-radius:10px; font-weight:700; cursor:pointer }
-    .btn:hover{ filter:brightness(1.05) }
-
-    /* Footer */
-    footer{ color:#fff; text-align:center; padding:24px 16px; opacity:.95 }
-    .footer-logos{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:6px }
-    .badge{ font-size:.8rem; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,0.16) }
+    footer{padding:28px 0; text-align:center; color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <!-- Upload icsi-logo.png to your repo root for this to show -->
-        <img src="icsi-logo.png" alt="ICSI" onerror="this.style.display='none'" />
-        <div class="title">T.H. Shah & Associates</div>
+  <!-- Header / Navbar -->
+  <header>
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="#home">
+          <div class="logo-placeholder">C</div>
+          <h1>CompliMate</h1>
+        </a>
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#people">People</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-      <nav class="menu">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="tagline">Compliance, Simplified.</div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Corporate Compliance. Simplified.</h1>
-      <p>Company Secretaries in Practice • Pune</p>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="card">
-      <h2 class="section-title">About Us</h2>
-      <p><strong>T H Shah &amp; Associates</strong> is a Practicing Company Secretaries Firm located in Pune. Established in the year 2016, the firm provides quality services for solving various Corporate Law and Secretarial matters. The firm also endeavors to widen and maintain its client base by adhering to the highest professional standards. The people associated with the firm strive to cross new horizons by exploiting new avenues of services through new learning. For this purpose, they keep themselves abreast with the frequent changes in law.</p>
-      <h3>Vision</h3>
-      <p>To be a professional services firm, providing cost effective legal and business solutions through a community of learned and qualified individuals.</p>
-      <h3>Mission</h3>
-      <ol>
-        <li><strong>Excellence</strong>: We define excellence as “being the best at what we do” by imbibing the spirit of constant improvement in all our endeavors to achieve high quality results and set standards.</li>
-        <li><strong>Professionalism</strong>: As a professional organization, we develop and sustain the competence of our people. We are objective and fair in our approach, consistent in our performance and own responsibility for our actions.</li>
-        <li><strong>Ethics</strong>: We act with utmost integrity and believe in honesty and respect for one and all. We believe it as our responsibility to be transparent and straight forward in our dealings.</li>
-        <li><strong>Transparency</strong>: We believe in providing a service with transparency and believe in fast and in time communication with the clients.</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services">
-    <div class="card">
-      <h2 class="section-title">Our Services</h2>
-
-      <details>
-        <summary>1) Formation and Conversion</summary>
-        <ul>
-          <li>Formation of Private Limited Companies</li>
-          <li>Formation of Public Limited Companies</li>
-          <li>Formation of Section 8 Companies</li>
-          <li>Formation of Limited Liability Partnership</li>
-          <li>Conversion of Partnership Firm into Private or Public Limited Company</li>
-          <li>Conversion of Private Limited Companies to Public Limited Companies and vice versa</li>
-          <li>Conversion of Private Limited Companies into LLP</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>2) Company Law and Secretarial Compliances</summary>
-        <ul>
-          <li>Compliances relating to meetings of Board of Directors, Shareholders, Creditors, Annual General Meetings and Extra Ordinary General Meetings.</li>
-          <li>Filing of Annual Returns with the Ministry of Corporate Affairs and related legal documentation.</li>
-          <li>Maintenance of Minutes books and Statutory Registers.</li>
-          <li>Compliances related to Statutory meeting and statutory report.</li>
-          <li>Change in the name or address of Companies / LLP.</li>
-          <li>Changing the authorized / paid up share capital of Companies.</li>
-          <li>Issue / Allotment of shares and related compliances.</li>
-          <li>Transfer / transmission of shares.</li>
-          <li>Alteration of main object of Companies.</li>
-          <li>Appointment and Resignation of Directors.</li>
-          <li>Inter Corporate Investments and Loans.</li>
-          <li>Advising on creation , satisfaction and registration of charges.</li>
-          <li>Drafting of Director’s Report , Corporate Governance Report , Annual Report.</li>
-          <li>Matters related to Investor Grievances.</li>
-          <li>Payment of Dividend and related compliances.</li>
-          <li>Closure of Companies under Fast Track Exit Mode.</li>
-          <li>Director Identification Number Compliances.</li>
-          <li>Secretarial Compliance Audit.</li>
-          <li>XBRL filing.</li>
-          <li>Preparation of Legal Opinions.</li>
-          <li>Drafting of petitions.</li>
-          <li>Compliances with National Stock Exchange and Bombay Stock Exchange regarding clauses of SEBI (Listing Obligations and Disclosure Requirements) Regulations.</li>
-          <li>Preparation of Search Reports with respect to Banks.</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>3) Services under Foreign Exchange Management Act</summary>
-        <ul>
-          <li>Reporting to RBI about receipt of Foreign Inward Remittance</li>
-          <li>Preparation of FC-GPR for allotment of shares</li>
-          <li>Preparation of Form FCTRS</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>4) Compliance Audit</summary>
-        <p>Conducting compliance and secretarial audit for and on behalf of the corporates which helps to strengthen the Corporate Governance in an organization. Compliance Audit assists the Board of Directors on understanding the status of the statutory compliances, internal control systems, management information systems and its effectiveness in the proper and transparent governance of the organization.</p>
-      </details>
-
-      <details>
-        <summary>5) Corporate Advisory Services</summary>
-        <ul>
-          <li>Legal and regulatory aspects of doing business in India</li>
-          <li>Requisite approvals required from the Foreign Investment Promotion Board (FIPB) and Reserve Bank of India (RBI)</li>
-          <li>Corporate Governance thereby enhancing shareholder value</li>
-          <li>Transaction documents and agreements such as employment , consultancy  confidentiality , joint ventures , shareholders and subscription agreements.</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>6) Labour Laws</summary>
-        <ul>
-          <li>Employment Agreements</li>
-          <li>Advising on applicability of various labour laws in setting up operations in India</li>
-          <li>ESI and Provident Fund Compliances i.e. payments and returns.</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>7) Intellectual Property Rights</summary>
-        <ul>
-          <li>Registration of Trademarks</li>
-          <li>Registration of Copyrights</li>
-          <li>Registration of Patents</li>
-        </ul>
-      </details>
-
-      <details>
-        <summary>8) Other Services</summary>
-        <ul>
-          <li>Goods &amp; Service Tax (GST) and related compliances</li>
-          <li>Project Reports</li>
-          <li>Bank Reconciliation</li>
-          <li>Importer Exporter Code (IEC) application</li>
-          <li>Registration of Partnership Firms , Co-operative Societies and Trusts</li>
-          <li>Due Diligence</li>
-          <li>PAN / TAN Application</li>
-          <li>Shop Act License</li>
-          <li>Drafting of various contracts</li>
-          <li>Drafting of Privacy Policies , Pricing Policies , End User License Agreements , Terms of Use, etc. for websites and software products.</li>
-          <li>Registration under Startup India Scheme</li>
-          <li>Food License</li>
-          <li>Shop Act</li>
-          <li>Udyam Aadhar</li>
-          <li>IEC Code</li>
-          <li>Startup Recognition (DPIIT)</li>
-        </ul>
-      </details>
-
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="card">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="contact-grid">
-        <div class="info">
-          <p><strong>Office:</strong> A504, Eisha Pearl, Kondhwa Khurd, Pune - 411048</p>
-          <p><strong>Email:</strong> <a href="mailto:cstoshikshah@gmail.com">cstoshikshah@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+919960860828">+91 9960860828</a></p>
-          <p class="badge">Member — The Institute of Company Secretaries of India (ICSI)</p>
-        </div>
-        <form id="contactForm" autocomplete="on">
-          <div class="row">
-            <div>
-              <label for="name">Your Name</label>
-              <input id="name" name="name" type="text" placeholder="e.g., Rohan Mehta" required />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="name@example.com" required />
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" placeholder="+91-XXXXXXXXXX" pattern="[+0-9\-() ]{7,}" />
-            </div>
-            <div>
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" type="text" placeholder="Inquiry subject" required />
-            </div>
-          </div>
-          <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
-          </div>
-          <button class="btn" type="submit">Send Enquiry</button>
-          <p style="font-size:.9rem; opacity:.85; margin-top:8px">Submitting opens your email app with the details pre-filled.</p>
-        </form>
+  <main id="home" class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Your trusted partner in Corporate Law, Secretarial, FEMA and Tax Compliance</h2>
+        <p>End‑to‑end support from incorporation to ongoing governance, reporting and advisory.</p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-card">
+        <h2 class="section-title">Our Services</h2>
+
+        <!-- 1. Formation & Conversion -->
+        <details open>
+          <summary><span class="arrow">▶</span> Formation and Conversion</summary>
+          <div class="panel">
+            <ul>
+              <li>Formation of Private Limited Companies</li>
+              <li>Formation of Public Limited Companies</li>
+              <li>Formation of Section 8 Companies</li>
+              <li>Formation of Limited Liability Partnership</li>
+              <li>Conversion of Partnership Firm into Private or Public Limited Company</li>
+              <li>Conversion of Private Limited Companies to Public Limited Companies and vice versa</li>
+              <li>Conversion of Private Limited Companies into LLP</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 2. Company Law & Secretarial Compliances -->
+        <details open>
+          <summary><span class="arrow">▶</span> Company Law and Secretarial Compliances</summary>
+          <div class="panel">
+            <ul>
+              <li>Compliances relating to meetings of Board of Directors, Shareholders, Creditors, Annual General Meetings and Extra Ordinary General Meetings.</li>
+              <li>Filing of Annual Returns with the Ministry of Corporate Affairs and related legal documentation.</li>
+              <li>Maintenance of Minutes books and Statutory Registers.</li>
+              <li>Compliances related to Statutory meeting and statutory report.</li>
+              <li>Change in the name or address of Companies / LLP.</li>
+              <li>Changing the authorized / paid up share capital of Companies.</li>
+              <li>Issue / Allotment of shares and related compliances.</li>
+              <li>Transfer / transmission of shares.</li>
+              <li>Alteration of main object of Companies.</li>
+              <li>Appointment and Resignation of Directors.</li>
+              <li>Inter Corporate Investments and Loans.</li>
+              <li>Advising on creation, satisfaction and registration of charges.</li>
+              <li>Drafting of Director’s Report, Corporate Governance Report, Annual Report.</li>
+              <li>Matters related to Investor Grievances.</li>
+              <li>Payment of Dividend and related compliances.</li>
+              <li>Closure of Companies under Fast Track Exit Mode.</li>
+              <li>Director Identification Number Compliances.</li>
+              <li>Secretarial Compliance Audit.</li>
+              <li>XBRL filing.</li>
+              <li>Preparation of Legal Opinions.</li>
+              <li>Drafting of petitions.</li>
+              <li>Compliances with National Stock Exchange and Bombay Stock Exchange regarding clauses of SEBI (Listing Obligations and Disclosure Requirements) Regulations.</li>
+              <li>Preparation of Search Reports with respect to Banks.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 3. FEMA -->
+        <details open>
+          <summary><span class="arrow">▶</span> Services under Foreign Exchange Management Act (FEMA)</summary>
+          <div class="panel">
+            <ul>
+              <li>Reporting to RBI about receipt of Foreign Inward Remittance</li>
+              <li>Preparation of FC-GPR for allotment of shares</li>
+              <li>Preparation of Form FCTRS</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 4. Compliance Audit -->
+        <details open>
+          <summary><span class="arrow">▶</span> Compliance Audit</summary>
+          <div class="panel">
+            Conducting compliance and secretarial audit for and on behalf of the corporates which helps to strengthen the Corporate Governance in an organization. Compliance Audit assists the Board of Directors on understanding the status of the statutory compliances, internal control systems, management information systems and its effectiveness in the proper and transparent governance of the organization.
+          </div>
+        </details>
+
+        <!-- 5. Corporate Advisory -->
+        <details open>
+          <summary><span class="arrow">▶</span> Corporate Advisory Services</summary>
+          <div class="panel">
+            <ul>
+              <li>Legal and regulatory aspects of doing business in India</li>
+              <li>Requisite approvals required from the Foreign Investment Promotion Board (FIPB) and Reserve Bank of India (RBI)</li>
+              <li>Corporate Governance thereby enhancing shareholder value</li>
+              <li>Transaction documents and agreements such as employment, consultancy, confidentiality, joint ventures, shareholders and subscription agreements.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 6. Labour Laws -->
+        <details open>
+          <summary><span class="arrow">▶</span> Labour Laws</summary>
+          <div class="panel">
+            <ul>
+              <li>Employment Agreements</li>
+              <li>Advising on applicability of various labour laws in setting up operations in India</li>
+              <li>ESI and Provident Fund Compliances i.e. payments and returns.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 7. IPR -->
+        <details open>
+          <summary><span class="arrow">▶</span> Intellectual Property Rights</summary>
+          <div class="panel">
+            <ul>
+              <li>Registration of Trademarks</li>
+              <li>Registration of Copyrights</li>
+              <li>Registration of Patents</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 8. Other Services -->
+        <details open>
+          <summary><span class="arrow">▶</span> Other Services</summary>
+          <div class="panel">
+            <ul>
+              <li>Goods &amp; Service Tax (GST) and related compliances</li>
+              <li>Project Reports</li>
+              <li>Bank Reconciliation</li>
+              <li>Importer Exporter Code (IEC) application</li>
+              <li>Registration of Partnership Firms, Co-operative Societies and Trusts</li>
+              <li>Due Diligence</li>
+              <li>PAN / TAN Application</li>
+              <li>Shop Act License</li>
+              <li>Drafting of various contracts</li>
+              <li>Drafting of Privacy Policies, Pricing Policies, End User License Agreements, Terms of Use, etc. for websites and software products.</li>
+              <li>Registration under Startup India Scheme</li>
+              <li>Food License</li>
+              <li>Shop Act</li>
+              <li>Udyam Aadhar</li>
+              <li>IEC Code</li>
+              <li>Startup Recognition (DPIIT)</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- 9. Accounting & Tax -->
+        <details open>
+          <summary><span class="arrow">▶</span> Accounting, Tax &amp; Audit</summary>
+          <div class="panel">
+            <ul>
+              <li>Bookkeeping &amp; Accounting</li>
+              <li>Income Tax Compliance</li>
+              <li>TDS &amp; TCS Compliance</li>
+              <li>GST Compliance &amp; Advisory</li>
+              <li>Professional Tax (PT) Compliance</li>
+              <li>PTEC / PTRC Compliance</li>
+              <li>Statutory &amp; Tax audit</li>
+              <li>Representation before Tax Authorities</li>
+              <li>Financial Reporting &amp; MIS</li>
+              <li>Tax Planning &amp; Advisory</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- PEOPLE -->
+    <section id="people">
+      <div class="section-card">
+        <h2 class="section-title">People</h2>
+        <div class="grid grid-2">
+          <!-- Toshik Shah -->
+          <article class="person">
+            <div class="avatar">TS</div>
+            <div>
+              <h3>CS Toshik Shah <span class="role">(B.Com, CS, LL.B)</span></h3>
+              <p>
+                CS Toshik Shah holds a Bachelor of Commerce degree form Savitribai Phule Pune University and a professional degree of Company Secretary from the Institute of Company Secretaries of India (ICSI). He has also done his LL.B and also holds a Diploma in Labour Laws &amp; Labour Works and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements / documents.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tapan Shah -->
+          <article class="person">
+            <div class="avatar">TS</div>
+            <div>
+              <h3>Tapan Shah <span class="role">Tax Consultant</span></h3>
+              <p>
+                Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers a wide range of services, including bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, Tapan also provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing their financial outcomes. His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-card">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+          <div>
+            <p><strong>Call:</strong> <a href="tel:+919960860828">+91 9960860828</a></p>
+            <p><strong>Email:</strong> <a href="mailto:cstoshikshah@gmail.com">cstoshikshah@gmail.com</a></p>
+            <p class="muted">We usually respond within one business day.</p>
+          </div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <div>&copy; 2025 T.H. Shah &amp; Associates • All Rights Reserved</div>
-      <div class="footer-logos">
-        <!-- ICSI logo will appear if you upload icsi-logo.png to the repo -->
-        <img src="icsi-logo.png" alt="ICSI" height="28" onerror="this.style.display='none'" />
-      </div>
-    </div>
+    © CompliMate — Compliance, Simplified.
   </footer>
-
-  <script>
-    // Compose an email via mailto with form contents
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      const to = 'cstoshikshah@gmail.com';
-      const sub = encodeURIComponent(subject || `Website enquiry from ${name}`);
-      const body = encodeURIComponent(
-        `New enquiry from website%0D%0A%0D%0A`+
-        `Name: ${name}%0D%0A`+
-        `Email: ${email}%0D%0A`+
-        `Phone: ${phone}%0D%0A`+
-        `Subject: ${subject}%0D%0A%0D%0A`+
-        `Message:%0D%0A${message}`
-      );
-      window.location.href = `mailto:${to}?subject=${sub}&body=${body}`;
-      this.reset();
-    });
-  </script>
 </body>
 </html>
