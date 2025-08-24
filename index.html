@@ -1,44 +1,390 @@
-<!-- About Us Section -->
-<section id="about" class="py-20 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <div class="bg-white/80 shadow-xl rounded-2xl p-10 backdrop-blur-sm border border-gray-200">
-      <h2 class="text-4xl font-bold text-gray-800 mb-6">About Us</h2>
-      <p class="text-lg text-gray-700 mb-6">
-        Complimate Advisory Services is a Practicing Company Secretaries Firm located in Pune. 
-        We provide quality services for solving various Corporate Law and Secretarial matters. 
-        We also endeavor to widen and maintain our client base by adhering to the highest 
-        professional standards. The people associated with the firm strive to cross new horizons 
-        by exploiting new avenues of services through new learning. For this purpose, they keep 
-        themselves abreast with the frequent changes in law.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Complimate Advisory Services — Compliance, Simplified.</title>
+<style>
+  :root{
+    --brand1:#004e92; /* deep blue */
+    --brand2:#000428; /* midnight blue */
+    --accent:#0ea5e9; /* sky accent */
+    --text:#1f2937;   /* slate-800 */
+    --muted:#6b7280;  /* slate-500 */
+    --card:#ffffff;
+    --soft1:#eef4ff;
+    --soft2:#f7f9ff;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+
+  /* Basic reset */
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Ubuntu,"Apple Color Emoji","Segoe UI Emoji";
+    color:var(--text);
+    background:#fafafa;
+    line-height:1.6;
+    scroll-behavior:smooth;
+  }
+
+  /* Sticky Navbar */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(135deg,var(--brand1),var(--brand2));
+    color:#fff;
+    box-shadow:0 4px 18px rgba(0,0,0,.15);
+  }
+  .nav-inner{
+    max-width:1200px; margin:0 auto; padding:.8rem 1rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .brand{
+    display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.3px;
+  }
+  .brand img{height:36px}
+  .brand span{font-size:1.05rem}
+  .menu{display:flex; gap:1rem; flex-wrap:wrap}
+  .menu a{
+    color:#fff; text-decoration:none; font-weight:600; padding:.4rem .7rem; border-radius:10px;
+    transition:background .2s, color .2s, opacity .2s;
+    opacity:.95;
+  }
+  .menu a:hover{background:rgba(255,255,255,.14); color:#fff; opacity:1}
+
+  /* Hero */
+  .hero{
+    position:relative; min-height:62vh; display:grid; place-items:center; text-align:center; color:#fff;
+    background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,8,20,.35), rgba(0,8,20,.65));
+  }
+  .hero-inner{position:relative; z-index:1; padding:3rem 1rem}
+  .hero h1{font-size:clamp(2rem,4.5vw,3rem); margin:.2rem 0 .6rem}
+  .tagline{font-size:clamp(1rem,2.3vw,1.25rem); opacity:.95}
+  .cta{
+    margin-top:1.2rem; display:inline-block; text-decoration:none; color:#fff; font-weight:700;
+    background:linear-gradient(135deg,#22c1c3,#0ea5e9);
+    padding:.8rem 1.1rem; border-radius:999px; box-shadow:0 8px 20px rgba(14,165,233,.35);
+    transition:transform .12s ease, box-shadow .12s ease, opacity .2s;
+  }
+  .cta:hover{transform:translateY(-1px); box-shadow:0 12px 26px rgba(14,165,233,.45)}
+
+  /* Section helpers */
+  section{scroll-margin-top:80px}
+  .section-grad{
+    background:linear-gradient(135deg,var(--soft1),var(--soft2));
+    padding:64px 16px;
+  }
+  .container{max-width:1200px; margin:0 auto}
+  .card{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:28px;
+  }
+  .section-title{
+    font-size:clamp(1.4rem,3.4vw,2rem); margin:0 0 18px; color:var(--brand1); text-align:center;
+  }
+  .section-sub{max-width:900px; margin:0 auto 24px; color:var(--muted); text-align:center}
+
+  /* About */
+  .about h3{margin:18px 0 8px; color:var(--brand1)}
+  .about p{margin:8px 0; text-align:justify}
+
+  /* Services – collapsible groups with rotating arrows */
+  .groups{display:grid; gap:14px}
+  details.service{
+    background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:0; overflow:hidden;
+  }
+  details.service + details.service{margin-top:4px}
+  .service summary{
+    list-style:none; cursor:pointer; user-select:none; display:flex; align-items:center; gap:10px;
+    padding:16px 18px; font-weight:700; color:var(--brand1); background:#fff;
+  }
+  .service summary::-webkit-details-marker{display:none}
+  .arrow{
+    width:10px; height:10px; display:inline-block; transform:rotate(0deg); transition:transform .18s ease;
+    border-right:2px solid var(--brand1); border-bottom:2px solid var(--brand1);
+    margin-right:2px; transform-origin:center; rotate:-45deg;
+  }
+  details[open] .arrow{rotate:45deg}
+  .panel{padding:2px 18px 18px 18px; background:#fff}
+  .panel ul{margin:10px 0 0 18px}
+  .panel li{margin:6px 0}
+
+  /* People */
+  .people-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;
+  }
+  .person h4{margin:8px 0; color:var(--brand1)}
+  .role{color:var(--muted); margin-top:-4px; margin-bottom:8px; font-weight:600}
+  .bio{white-space:pre-line; text-align:justify}
+
+  /* Contact */
+  .contact-list{display:grid; gap:8px; justify-items:center}
+  .contact-item{font-weight:700}
+
+  /* Footer */
+  footer{
+    background:linear-gradient(135deg,var(--brand1),var(--brand2)); color:#fff; text-align:center; padding:22px 12px; margin-top:24px;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width:600px){
+    .menu{gap:.4rem}
+    .brand span{display:none} /* keep it tidy on very small screens */
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <!-- Optional logo; will disappear if not uploaded yet -->
+      <img src="images/complimate.png" alt="Complimate Logo" onerror="this.style.display='none'">
+      <span>Complimate Advisory Services</span>
+    </div>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#people">People</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <h1>Complimate Advisory Services</h1>
+    <div class="tagline">Compliance, Simplified.</div>
+    <a class="cta" href="#contact">Contact Us</a>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about" class="section-grad">
+  <div class="container">
+    <div class="card about">
+      <h2 class="section-title">About Us</h2>
+      <p>
+        Complimate Advisory Services is a Practicing Company Secretaries Firm located in Pune. We provide quality services for solving various Corporate Law and Secretarial matters. We also endeavor to widen and maintain our client base by adhering to the highest professional standards. The people associated with the firm strive to cross new horizons by exploiting new avenues of services through new learning. For this purpose, they keep themselves abreast with the frequent changes in law.
       </p>
 
-      <div class="text-left mt-8 space-y-6">
-        <div>
-          <h3 class="text-2xl font-semibold text-indigo-700">Vision</h3>
-          <p class="text-gray-700 mt-2">
-            To be a professional services firm, providing cost effective legal and business 
-            solutions through a community of learned and qualified individuals.
+      <h3>Vision</h3>
+      <p>To be a professional services firm, providing cost effective legal and business solutions through a community of learned and qualified individuals.</p>
+
+      <h3>Mission</h3>
+      <ul>
+        <li><strong>Excellence:</strong> We define excellence as “being the best at what we do” by imbibing the spirit of constant improvement in all our endeavors to achieve high quality results and set standards.</li>
+        <li><strong>Professionalism:</strong> As a professional organization, we develop and sustain the competence of our people. We are objective and fair in our approach, consistent in our performance and own responsibility for our actions.</li>
+        <li><strong>Ethics:</strong> We act with utmost integrity and believe in honesty and respect for one and all. We believe it as our responsibility to be transparent and straight forward in our dealings.</li>
+        <li><strong>Transparency:</strong> We believe in providing a service with transparency and believe in fast and in time communication with the clients.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (ALL ITEMS, COLLAPSIBLE) -->
+<section id="services" class="section-grad">
+  <div class="container">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">Expand each section to view the full list.</p>
+
+    <div class="groups">
+
+      <details class="service">
+        <summary><span class="arrow"></span>Formation and Conversion</summary>
+        <div class="panel">
+          <ul>
+            <li>Formation of Private Limited Companies</li>
+            <li>Formation of Public Limited Companies</li>
+            <li>Formation of Section 8 Companies</li>
+            <li>Formation of Limited Liability Partnership</li>
+            <li>Conversion of Partnership Firm into Private or Public Limited Company</li>
+            <li>Conversion of Private Limited Companies to Public Limited Companies and vice versa</li>
+            <li>Conversion of Private Limited Companies into LLP</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Company Law and Secretarial Compliances</summary>
+        <div class="panel">
+          <ul>
+            <li>Compliances relating to meetings of Board of Directors, Shareholders, Creditors, Annual General Meetings and Extraordinary General Meetings</li>
+            <li>Filing of Annual Returns with the Ministry of Corporate Affairs and related legal documentation</li>
+            <li>Maintenance of Minutes books and Statutory Registers</li>
+            <li>Compliances related to Statutory meeting and statutory report</li>
+            <li>Change in the name or address of Companies / LLP</li>
+            <li>Changing the authorized / paid up share capital of Companies</li>
+            <li>Issue / Allotment of shares and related compliances</li>
+            <li>Transfer / transmission of shares</li>
+            <li>Alteration of main object of Companies</li>
+            <li>Appointment and Resignation of Directors</li>
+            <li>Inter Corporate Investments and Loans</li>
+            <li>Advising on creation, satisfaction and registration of charges</li>
+            <li>Drafting of Director’s Report, Corporate Governance Report, Annual Report</li>
+            <li>Matters related to Investor Grievances</li>
+            <li>Payment of Dividend and related compliances</li>
+            <li>Closure of Companies under Fast Track Exit Mode</li>
+            <li>Director Identification Number Compliances</li>
+            <li>Secretarial Compliance Audit</li>
+            <li>XBRL filing</li>
+            <li>Preparation of Legal Opinions</li>
+            <li>Drafting of petitions</li>
+            <li>Compliances with NSE & BSE regarding clauses of SEBI (LODR) Regulations</li>
+            <li>Preparation of Search Reports with respect to Banks</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Services under Foreign Exchange Management Act (FEMA)</summary>
+        <div class="panel">
+          <ul>
+            <li>Reporting to RBI about receipt of Foreign Inward Remittance</li>
+            <li>Preparation of FC-GPR for allotment of shares</li>
+            <li>Preparation of Form FC-TRS</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Compliance Audit</summary>
+        <div class="panel">
+          <p>
+            Conducting compliance and secretarial audit for and on behalf of corporates which helps strengthen Corporate Governance. The audit assists the Board in understanding the status of statutory compliances, internal control systems, management information systems and their effectiveness for proper and transparent governance.
           </p>
         </div>
+      </details>
 
-        <div>
-          <h3 class="text-2xl font-semibold text-indigo-700">Mission</h3>
-          <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-            <li>
-              <strong>Excellence:</strong> We define excellence as “being the best at what we do” by imbibing the spirit of constant improvement in all our endeavors to achieve high quality results and set standards.
-            </li>
-            <li>
-              <strong>Professionalism:</strong> As a professional organization, we develop and sustain the competence of our people. We are objective and fair in our approach, consistent in our performance and own responsibility for our actions.
-            </li>
-            <li>
-              <strong>Ethics:</strong> We act with utmost integrity and believe in honesty and respect for one and all. We believe it as our responsibility to be transparent and straight forward in our dealings.
-            </li>
-            <li>
-              <strong>Transparency:</strong> We believe in providing a service with transparency and believe in fast and in time communication with the clients.
-            </li>
+      <details class="service">
+        <summary><span class="arrow"></span>Corporate Advisory Services</summary>
+        <div class="panel">
+          <ul>
+            <li>Legal and regulatory aspects of doing business in India</li>
+            <li>Requisite approvals from FIPB and RBI</li>
+            <li>Corporate Governance, thereby enhancing shareholder value</li>
+            <li>Transaction documents & agreements (employment, consultancy, confidentiality, joint ventures, shareholders and subscription agreements)</li>
           </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Labour Laws</summary>
+        <div class="panel">
+          <ul>
+            <li>Employment Agreements</li>
+            <li>Advising on applicability of various labour laws in setting up operations in India</li>
+            <li>ESI and Provident Fund compliances (payments and returns)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Intellectual Property Rights</summary>
+        <div class="panel">
+          <ul>
+            <li>Registration of Trademarks</li>
+            <li>Registration of Copyrights</li>
+            <li>Registration of Patents</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Other Services</summary>
+        <div class="panel">
+          <ul>
+            <li>Goods & Service Tax (GST) and related compliances</li>
+            <li>Project Reports</li>
+            <li>Bank Reconciliation</li>
+            <li>Importer Exporter Code (IEC) application</li>
+            <li>Registration of Partnership Firms, Co-operative Societies and Trusts</li>
+            <li>Due Diligence</li>
+            <li>PAN / TAN Application</li>
+            <li>Shop Act License</li>
+            <li>Drafting of various contracts</li>
+            <li>Drafting of Privacy Policies, Pricing Policies, EULA, Terms of Use for websites & software products</li>
+            <li>Registration under Startup India Scheme</li>
+            <li>Food License</li>
+            <li>Shop Act</li>
+            <li>Udyam Aadhar</li>
+            <li>IEC Code</li>
+            <li>Startup Recognition (DPIIT)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary><span class="arrow"></span>Accounting & Tax Services</summary>
+        <div class="panel">
+          <ul>
+            <li>Bookkeeping & Accounting</li>
+            <li>Income Tax Compliance</li>
+            <li>TDS & TCS Compliance</li>
+            <li>GST Compliance & Advisory</li>
+            <li>Professional Tax (PT) Compliance</li>
+            <li>PTEC / PTRC Compliance</li>
+            <li>Statutory & Tax Audit</li>
+            <li>Representation before Tax Authorities</li>
+            <li>Financial Reporting & MIS</li>
+            <li>Tax Planning & Advisory</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section id="people" class="section-grad">
+  <div class="container">
+    <h2 class="section-title">Our People</h2>
+
+    <div class="people-grid">
+      <div class="card person">
+        <h4>CS Toshik Shah (B.Com, CS, LL.B)</h4>
+        <div class="role">Practicing Company Secretary</div>
+        <div class="bio">
+CS Toshik Shah holds a Bachelor of Commerce degree form Savitribai Phule Pune University and a professional degree of Company Secretary from the Institute of Company Secretaries of India (ICSI). He has also done his LL.B and also holds a Diploma in Labour Laws & Labour Works and a Diploma in Cyber Laws. He is an expert in Secretarial Matters and drafting of agreements / documents.
+        </div>
+      </div>
+
+      <div class="card person">
+        <h4>Tapan Shah (Tax Consultant)</h4>
+        <div class="role">Tax & Finance Specialist</div>
+        <div class="bio">
+Tapan Shah is a seasoned finance professional with extensive expertise in accounting, taxation, and compliance. He offers a wide range of services, including bookkeeping, GST, TDS/TCS, income tax, and professional tax compliance, along with statutory and tax audits. Known for his strategic approach, Tapan also provides financial reporting, MIS, tax planning, and advisory services, ensuring clients stay compliant while optimizing their financial outcomes. His experience includes representing clients before tax authorities, making him a trusted advisor for businesses seeking comprehensive financial solutions.
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-grad">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-list">
+        <div class="contact-item">📞 +91 9960860828</div>
+        <div class="contact-item">📧 cstoshikshah@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Complimate Advisory Services. All rights reserved.
+</footer>
+
+</body>
+</html>
