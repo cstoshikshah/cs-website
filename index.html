@@ -18,7 +18,6 @@
     --shadow:0 10px 30px rgba(0,0,0,.08);
   }
 
-  /* Basic reset */
   *{box-sizing:border-box}
   html,body{margin:0}
   body{
@@ -130,11 +129,12 @@
   footer{
     background:linear-gradient(135deg,var(--brand1),var(--brand2)); color:#fff; text-align:center; padding:22px 12px; margin-top:24px;
   }
+  footer a{color:#fff; text-underline-offset:3px}
 
   /* Responsive tweaks */
   @media (max-width:600px){
     .menu{gap:.4rem}
-    .brand span{display:none} /* keep it tidy on very small screens */
+    .brand span{display:none}
   }
 </style>
 </head>
@@ -376,14 +376,32 @@ Tapan Shah is a seasoned finance professional with extensive expertise in accoun
       <h2 class="section-title">Contact Us</h2>
       <div class="contact-list">
         <div class="contact-item">📞 +91 9960860828</div>
-        <div class="contact-item">📧 cstoshikshah@gmail.com</div>
+        <div class="contact-item">📧 <a href="mailto:cstoshikshah@gmail.com">cstoshikshah@gmail.com</a></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY POLICY (short & simple) -->
+<section id="privacy" class="section-grad">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Privacy Policy</h2>
+      <p>
+        At <strong>Complimate Advisory Services</strong>, we respect your privacy. We collect basic contact details you provide (such as name, email, phone and business information) to respond to enquiries and deliver our services. We do not sell your data. We may share information only when required by law or with your consent. We use reasonable technical and organizational measures to protect your information. By using this website, you consent to this policy.
+      </p>
+      <p style="margin-top:10px">
+        For questions or requests (view/update/delete your data), please write to
+        <a href="mailto:cstoshikshah@gmail.com">cstoshikshah@gmail.com</a>.
+      </p>
     </div>
   </div>
 </section>
 
 <footer>
   © 2025 Complimate Advisory Services. All rights reserved.
+  &nbsp; • &nbsp;
+  <a href="#privacy">Privacy Policy</a>
 </footer>
 
 </body>
